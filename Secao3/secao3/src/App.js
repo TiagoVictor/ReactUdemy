@@ -96,7 +96,7 @@ function App() {
       {/* Tarefa */}
       <div>
         {peoples.map((people) => (
-          <UserDetail name={people.name} age={people.age} job={people.job}/>
+          <UserDetail name={people.name} age={people.age} job={people.job} />
         ))}
       </div>
     </div>
