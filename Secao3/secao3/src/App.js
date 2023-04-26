@@ -7,6 +7,11 @@ import ManageData from './components/ManageData';
 import ShowUserName from './components/ShowUserName';
 import CarDetails from './components/CarDetails';
 import Fragment from './components/Fragment';
+import Container from './Container';
+import ExecuteFunction from './ExecuteFunction';
+import Message from './Message';
+import ChangeMessageState from './ChangeMessageState';
+import UserDetail from './UserDetail';
 
 function App() {
   //const name = "Tiago Victor";
@@ -16,6 +21,22 @@ function App() {
     {id:2, brand:"Ford", km: 10000, color:"Vermelha", newCar:false},
     {id:3, brand:"Porsche", km: 2000, color:"Amarela", newCar:false},
   ]
+
+  const peoples = [
+    {name:"Tiago", age:25, job:"Developer"},
+    {name:"Tiago Pai", age:42, job:"Deliver"},
+    {name:"Tayla", age:4, job:"Student"}
+  ]
+
+  function showMassage(){
+    console.log("Função do componente pai!");
+  }
+
+  const [message, setMessage] = useState("");
+
+  const handleMessage = (msg) => {
+    setMessage(msg);
+  }
 
   return (
     <div className="App">
@@ -60,6 +81,24 @@ function App() {
       </div>
       {/* fragment */}
       <Fragment />
+
+      {/* children */}
+      <Container myProp={<h2>Minha prop</h2>}>
+        <p>Este é meu paragrafo</p>
+      </Container>
+
+      {/* executar função */}
+      <ExecuteFunction myFunction={showMassage} />
+      
+      {/* state lift */}
+      <Message msg={message}/>
+      <ChangeMessageState handleMessage={handleMessage} />
+      {/* Tarefa */}
+      <div>
+        {peoples.map((people) => (
+          <UserDetail name={people.name} age={people.age} job={people.job}/>
+        ))}
+      </div>
     </div>
   );
 }
