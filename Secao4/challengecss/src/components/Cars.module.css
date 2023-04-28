@@ -1,0 +1,27 @@
+.caixa {
+    width: 200px;
+    align-content: center;
+    margin-left: 42%;
+    margin-top: 0;
+}
+
+h2 {
+  color: crimson;
+  background: black;
+  padding: 20px;
+  margin-bottom: 0;  
+}
+
+.p_modelo {
+    color:gold;
+    background: brown;
+    padding: 10px;
+    margin: 0;
+}
+
+.preco{
+    color: red;
+    background: black;
+    padding: 10px;
+    margin: 0;
+}
