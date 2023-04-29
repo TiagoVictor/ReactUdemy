@@ -42,6 +42,7 @@ const MyForm = ({user}) => {
                 <label>
                     <span>Função no sistema</span>
                     <select name="role" onChange={setRole} value={role}>
+                        <option value="">Selecione</option>
                         <option value="user">Usuário</option>
                         <option value="infra">Infra</option>
                         <option value="admin">Administrador</option>
