@@ -4,6 +4,7 @@ import {useState} from 'react'
 const MyForm = ({user}) => {
     const [name, setName] = useState(user ? user.name : "");
     const [email, setEmail] = useState(user ? user.email : "");
+    const [bio, setBio] = useState("");
 
     const handleName = (e) => {
         setName(e.target.value)
@@ -15,10 +16,11 @@ const MyForm = ({user}) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log("Evento de submit");
-        console.log(name, email);
+        console.log(name, email, bio);
 
         setEmail("");
         setName("");
+        setBio("");
     }
 
     return(
@@ -31,6 +33,10 @@ const MyForm = ({user}) => {
                 <label>
                     <span>E-mail:</span>
                     <input type="text" name="email" placeholder="Digite seu e-mail" onChange={(e) => setEmail((e.target.value))} value={email}></input>
+                </label>
+                <label>
+                    <span>Bio:</span>
+                    <textarea name="bio" placeholder='Digite sua bio' onChange={(e) => setBio((e.target.value))} value={bio}></textarea>
                 </label>
                 <input type="submit" value="Enviar"/>
             </form>
