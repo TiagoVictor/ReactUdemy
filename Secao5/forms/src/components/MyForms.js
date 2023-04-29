@@ -16,6 +16,9 @@ const MyForm = ({user}) => {
         event.preventDefault();
         console.log("Evento de submit");
         console.log(name, email);
+
+        setEmail("");
+        setName("");
     }
 
     return(
