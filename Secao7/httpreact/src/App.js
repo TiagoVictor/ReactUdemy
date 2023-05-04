@@ -20,7 +20,7 @@ function App() {
     }
 
     fetchData();
-  }, [])
+  }, [products])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +38,8 @@ function App() {
       body: JSON.stringify(product),
     });
 
-    console.log(res);
+    setName("");
+    setPrice("");
   }
 
   return (
