@@ -12,7 +12,7 @@ function App() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
 
-  const { data: items, httpConfig } = useFetch(url);
+  const { data: items, httpConfig, loading, error } = useFetch(url);
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -48,16 +48,25 @@ function App() {
     setPrice("");
   }
 
+  const handleDelete = async (id) => {
+    httpConfig(id, "DELETE")
+  }
+
   return (
     <div className="App">
       <h1>Lista de produtos</h1>
-      <ul>
-        {items && items.map((product) => (
-          <li key={product.id}>
-            {product.name} - R${product.price}
-          </li>
-        ))}
-      </ul>
+      {loading && <p>Carregando dados...</p>}
+      {error && <p>{error}</p> }
+      {!error && (
+        <ul>
+          {items && items.map((product) => (
+            <li key={product.id}>
+              {product.name} - R${product.price}
+              <button onClick={() => handleDelete(product.id)}>Apagar</button>
+            </li>
+          ))}
+        </ul>
+      )}
 
       <div className="add-product">
         <form onSubmit={handleSubmit}>
@@ -79,7 +88,9 @@ function App() {
               onChange={(e) => setPrice(e.target.value)}
             />
           </label>
-          <input type="submit" value="Criar" />
+          {loading && <input type="submit" value="Aguarde" disabled/>}
+          {!loading && <input type="submit" value="Criar"/>}
+          
         </form>
       </div>
 
